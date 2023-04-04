@@ -1,4 +1,4 @@
-# LAB 08 - React Hooks Part 1
+# LAB 06 - React Hooks
 
 ## useState
 
@@ -31,8 +31,38 @@ We might have multiple state variables in one component.
    - if the count of numbers in the state is lower than 10, it displays the UI to roll next number (`<div>` with `className="TodaysNumbers"`)
    - if the count of numbers in the state is 10, it will display the `WinningNumbers` component, passing the current numbers as props
 
-### BONUS - fixing mistakes
+### BONUS 1 - fixing mistakes
 
 1. Inspect the `WinningNumbers` and `Numbers` components in `components/WinningNumbers.js`
 2. The `Numbers` component should change colors based on the selected option in `WinningNumbers`
 3. Find out why it is not working and fix it.
+
+## useEffect
+
+### Task 1 - window sizer
+
+1. Import the `WindowSizer` component from file `components/WindowSizer.js` to `App.js` and render it inside the main `<div>`
+2. Add the `useEffect` hook in the `WindowSizer` component to update the window dimension every time it resizes.
+   Use the `window.addEventListener('resize', () => { /* your set state functions here */ });` function to update the dimensions (See https://developer.mozilla.org/en-US/docs/Web/API/Window/resize_event)
+3. Make sure you clean up the listener in the cleanup function with `window.removeEventListener`
+
+### Task 2 - stopwatch
+
+1. Import the `Stopwatch` component from file `components/Stopwatch.js` to `App.js` and render it inside the main `<div>`
+2. Modify the `useEffect` hook in the `Stopwatch` component to not increment the time unless the `running` state variable is `true`.
+3. Make sure you specify all the dependencies correctly for the `useEffect`
+
+### Task 3 - stopwatch reset
+
+1. Make sure the `Reset` button in the `Stopwatch` component works. It should stop the timer and reset time to 0.
+
+### Task 4 - star wars
+
+1. Import the `StarWars` component from file `components/StarWars.js` to `App.js` and render it inside the main `<div>`
+2. Add the `useEffect` hook in the `StarWars` component to call the Star Wars API and fetch data about a selected movie
+3. Make sure you specify all the dependencies correctly for the `useEffect`
+4. Make sure you avoid race conditions and ignore stale results (See https://beta.reactjs.org/apis/react/useEffect#fetching-data-with-effects)
+
+### BONUS 2 - dynamic movie list
+
+1. Update the `select` in `StarWars` component to use dynamic data fetched from the Star Wars API. You can use the `fetchMovieList` helper to get the data.
